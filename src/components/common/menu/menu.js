@@ -1,22 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, MenuItem } from '@mui/material';
+import Drawer from '@mui/material/Drawer';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import ListItem from '@mui/material/ListItem';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import * as C from 'utils/constants';
+import { menuConfig } from './config';
 import './menu.scss';
-
-const config = [
-	{ label: 'Home', route: C.HOME_ROUTE },
-	{ label: 'Map', route: C.MAP_ROUTE },
-	{ label: 'Map - Fake data', route: C.MAP_FAKE_ROUTE },
-	{ label: 'Table', route: C.TABLE_ROUTE },
-	{ label: 'Table - Fake data', route: C.TABLE_FAKE_ROUTE },
-];
 
 const InterstatMenu = () => {
 	const [anchorEl, setAnchorEl] = React.useState(null);
@@ -42,30 +37,21 @@ const InterstatMenu = () => {
 						>
 							<MenuIcon />
 						</IconButton>
-						<Menu
-							id="long-menu"
-							MenuListProps={{
-								'aria-labelledby': 'long-button',
-							}}
-							anchorEl={anchorEl}
+						<Drawer
+							anchor={'left'}
 							open={open}
 							onClose={handleClose}
-							PaperProps={{
-								style: {
-									width: '20ch',
-								},
-							}}
+							className="menu-drawer"
 						>
-							{config.map(({ label, route }) => (
-								<MenuItem
-									className="menu-item"
-									key={route}
-									onClick={handleClose}
-								>
-									<Link to={`/${route}`}>{label}</Link>
-								</MenuItem>
+							{menuConfig.map(({ label, route, icon }) => (
+								<Link to={`/${route}`} key={route}>
+									<ListItem button onClick={handleClose}>
+										{icon && <ListItemIcon>{icon}</ListItemIcon>}
+										<ListItemText primary={label} />
+									</ListItem>
+								</Link>
 							))}
-						</Menu>
+						</Drawer>
 						<Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
 							Interstat
 						</Typography>
