@@ -1,10 +1,12 @@
-import { get, SEP } from '../utils';
+import { usePost, SEP } from '../utils';
 import { nutsPop } from '../queries';
+import { GET_NUTS_POP } from 'api/constants';
 
-export const getNutsPop = () =>
-	get(SEP)(nutsPop)
-		.then((r) => r.json())
-		.then((r) => {
-			debugger;
-			console.log(r);
-		});
+export const useFetch = (constant) => {
+	switch (constant) {
+		case GET_NUTS_POP:
+			return usePost(SEP)(nutsPop);
+		default:
+			return null;
+	}
+};
