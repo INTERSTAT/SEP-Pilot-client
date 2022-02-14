@@ -3,7 +3,7 @@ name: SEP Pilot client CI
 on:
   push:
     branches:
-      - Feat/GHA
+      - main
   pull_request:
     branches:
       - main
