@@ -2,7 +2,7 @@ import React from 'react';
 import Grid from '@mui/material/Grid';
 import Accordion from 'components/common/accordion';
 import Paper from 'components/common/paper';
-import Table from './table';
+import Table from './table-data';
 import { FAKE_TEXT } from '../table-fake/fake-data';
 
 const TablePage = () => (
