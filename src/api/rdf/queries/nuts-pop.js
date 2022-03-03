@@ -14,4 +14,6 @@ select ?nutsPop ?nutsId ?nutsLabel {
 	}
     ?nuts skos:notation ?nutsId .
 	?nuts skos:prefLabel ?nutsLabel .
-}`;
+}
+ORDER BY DESC(?nutsPop)
+`;
