@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: vtl-lab-ui
+  name: sep-pilot-client
   annotations:
     kubernetes.io/ingress.class: nginx
 spec:
@@ -16,6 +16,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: vtl-lab-ui
+                name: sep-pilot-client
                 port:
                   number: 80
