@@ -1,7 +1,7 @@
 # build environment
 FROM node:16-alpine as build
 WORKDIR /app
-COPY package.json yarn.lock ./
+COPY package.json yarn.lock .env ./
 RUN yarn install --frozen-lockfile
 COPY . .
 RUN yarn build
