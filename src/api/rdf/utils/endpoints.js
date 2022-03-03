@@ -1,2 +1,3 @@
-export const SEP =
-	'https://interstat.opsi-lab.it/graphdb/repositories/sep-test';
+import { getEnv } from 'env';
+
+export const SEP = getEnv()['SEP_REPO_URL'];
