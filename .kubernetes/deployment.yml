@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sep-pilot-client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sep-pilot-client
+  template:
+    metadata:
+      labels:
+        app: sep-pilot-client
+    spec:
+      containers:
+        - name: sep-pilot-client
+          image: interstat/sep-pilot-client:main
+          imagePullPolicy: Always
+          env:
+            - name: REACT_APP_SEP_REPO_URL
+              value: ''
