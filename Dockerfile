@@ -15,4 +15,6 @@ RUN npm i -g cra-envs@`node -e 'console.log(require("./cra-envs-package.json")["
 WORKDIR /usr/share/nginx
 COPY --from=build /app/build ./html
 COPY --from=build /app/.env .
+COPY --from=build /app/package.json .
+COPY --from=build /app/public/index.html ./public/
 ENTRYPOINT sh -c "npx embed-environnement-variables && nginx -g 'daemon off;'"

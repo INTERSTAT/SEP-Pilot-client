@@ -3354,10 +3354,10 @@ cosmiconfig@^7.0.0, cosmiconfig@^7.0.1:
     path-type "^4.0.0"
     yaml "^1.10.0"
 
-cra-envs@^1.2.5:
-  version "1.2.5"
-  resolved "https://registry.yarnpkg.com/cra-envs/-/cra-envs-1.2.5.tgz#d10891a247eaf2de07a23fcbb26e75a39d29647e"
-  integrity sha512-ewy6emxNESQyqaaNTYtGN1fPaz4BzXDo7UGTNMr9pIfS4AcAYBnkEZTpvS5o732xtL4PfbtyRLxMbS1gauziQg==
+cra-envs@^1.2.6:
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/cra-envs/-/cra-envs-1.2.6.tgz#d85657e418168fab75e3d3acdcf99ddd2961d271"
+  integrity sha512-88N/vwx7GMlv5rkXWIYaVDZtBdlqxU7l0U+RI7FI4wNMwYYcpugtAqvhU6PqbCIu7TJIGtMRsXjHQADPpi4PrQ==
   dependencies:
     "@types/ejs" "^3.1.0"
     "@types/node" "^10.0.0"
