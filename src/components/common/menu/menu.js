@@ -53,7 +53,7 @@ const InterstatMenu = () => {
 							))}
 						</Drawer>
 						<Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-							Interstat
+							Interstat SEP Pilot Services
 						</Typography>
 					</Toolbar>
 				</AppBar>

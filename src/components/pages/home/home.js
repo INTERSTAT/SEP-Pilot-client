@@ -5,7 +5,7 @@ const HomePage = () => (
 	<div className="Homepage">
         <img src="https://cef-interstat.eu/wp-content/uploads/2020/12/INTERSTAT_Symbol.png" className="App-logo" alt="logo" />
         <p>
-          INTERSTAT Pilots Application
+        INTERSTAT Support for Environment Policies pilot application
         </p>
         <a
           className="Framework-link"
