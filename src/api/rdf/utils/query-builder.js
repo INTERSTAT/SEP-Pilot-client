@@ -6,7 +6,7 @@ export const usePost = (endpoint) => (query) => {
 	const [error, setError] = useState(null);
 
 	useEffect(() => {
-		endpoint = 'https://interstat.eng.it/graphdb/repositories/sep-test';  
+		endpoint = 'https://interstat.eng.it/graphdb/repositories/sep-test';
 		const url = `${endpoint}`;
 		fetch(url, {
 			method: 'POST',
@@ -17,12 +17,12 @@ export const usePost = (endpoint) => (query) => {
 			body: `query=${encodeURI(query)}`,
 		})
 			.then((r) => {
-				console.log("endpoint: " + endpoint);
-				console.log("query: " + query);
+				console.log('endpoint: ' + endpoint);
+				console.log('query: ' + query);
 				if (!r.ok) throw new Error('Not 2xx response');
 				return r.json();
 			})
-			.then((r) => { 
+			.then((r) => {
 				setData(r);
 			})
 			.catch((e) => {

@@ -25,6 +25,7 @@
 		"web-vitals": "^2.1.4"
 	},
 	"scripts": {
+		"format": "prettier --write \"**/*.{js,json}\"",
 		"postinstall": "generate-env-getter js",
 		"prestart": "generate-env-getter js",
 		"start": "react-scripts start",

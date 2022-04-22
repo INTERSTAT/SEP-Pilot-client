@@ -1,4 +1,4 @@
-export const sparqlDataToTable = (res) => { 
+export const sparqlDataToTable = (res) => {
 	const {
 		head: { vars },
 		results: { bindings },
@@ -14,5 +14,7 @@ export const sparqlDataToTable = (res) => {
 			{}
 		)
 	);
+	console.log('DATA:');
+	console.log(data);
 	return { columns, data };
 };

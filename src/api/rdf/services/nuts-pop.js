@@ -9,8 +9,8 @@ export const useFetch = (constant) => {
 		case GET_NUTS_POP:
 			return usePost(SEP)(nutsPop);
 		case GET_NUTS_POP2:
-			return usePost(SEP)(nutsPop2); 
+			return usePost(SEP)(nutsPop2);
 		default:
-			return null;  
+			return null;
 	}
 };

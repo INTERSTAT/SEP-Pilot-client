@@ -3,11 +3,32 @@ import DataTable from 'react-data-table-component';
 import Loader from 'components/common/loader';
 import Error from 'components/common/error';
 import { useFetch } from 'api';
-import { GET_NUTS_POP } from 'api/constants';
 import { sparqlDataToTable } from 'utils';
 
-const Table = () => {
-	const { data, error, loading } = useFetch(GET_NUTS_POP);
+const customStyles = {
+	rows: {
+		style: {
+			minHeight: '10px',
+		},
+	},
+	headCells: {
+		style: {
+			fontSize: '15px',
+			fontWeight: '10',
+			textTransform: 'uppercase',
+			paddingLeft: '0 8px',
+		},
+	},
+	cells: {
+		style: {
+			fontSize: '10px',
+			paddingLeft: '0 8px',
+		},
+	},
+};
+
+const Table = ({ endpoint }) => {
+	const { data, error, loading } = useFetch(endpoint);
 
 	if (loading) return <Loader />;
 	if (error) return <Error message={error.toString()} />;
@@ -17,9 +38,9 @@ const Table = () => {
 
 	return (
 		<DataTable
-			title="Nuts population"
 			columns={columns}
 			data={tableData}
+			customStyles={customStyles}
 			pagination
 		/>
 	);

@@ -1,223 +1,80 @@
 import React from 'react';
-import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
+
 import 'leaflet/dist/leaflet.css';
-import markerIconPng from "leaflet/dist/images/marker-icon.png"
-import {Icon} from 'leaflet'
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
-import Accordion from 'components/common/accordion';
-import Paper from 'components/common/paper';
 import './service2.css';
-import { SERVICE_2_TITLE, SERVICE_2_DESCRIPTION } from './data';
-import Select from 'react-select'
-import TablePageNew from '../table-dataNew';
 
-const positionRome = [41.9027835, 12.4963655]
-const positionParis = [48.864716, 2.349014]
+import Paper from '@mui/material/Paper';
+import Table from '../table-data';
+import { GET_NUTS_POP } from 'api/constants';
+import { GET_NUTS_POP2 } from 'api/constants';
 
-const optionsNUTS3French = [
-  { value: '1', label: 'FR101' },
-  { value: '2', label: 'FR102' },
-  { value: '3', label: 'FR103' },
-  { value: '4', label: 'FR104' },
-  { value: '5', label: 'FR105' },
-  { value: '6', label: 'FR106' },
-  { value: '7', label: 'FR107' },
-  { value: '8', label: 'FR108' },
-  { value: '9', label: '	FRB01' },
-  { value: '10', label: '	FRB02' },
-  { value: '11', label: '	FRB03' },
-  { value: '12', label: '	FRB04' },
-  { value: '13', label: '	FRB05' },
-  { value: '14', label: '	FRB06' }, 
-  { value: '15', label: '	FRC11' }, 
-  { value: '16', label: '	FRC12' }, 
-  { value: '17', label: '	FRC13' }, 
-  { value: '19', label: '	FRC14' } 
-]
+import Left from './left';
+import One from './center/one';
+import Title from 'components/common/title';
+import Map from './center/map';
 
-const optionsNUTS3Italian = [
-  { value: '1', label: 'ITC11' },
-  { value: '2', label: 'ITC12' },
-  { value: '3', label: 'ITC13' },
-  { value: '4', label: 'ITC14' },
-  { value: '5', label: 'ITC15' },
-  { value: '6', label: 'ITC16' },
-  { value: '7', label: 'ITC17' },
-  { value: '8', label: 'ITC18' },
-  { value: '9', label: 'ITC19' },
-  { value: '10', label: 'ITC20' },
-  { value: '11', label: 'ITC31' },
-  { value: '12', label: 'ITC32' },
-  { value: '13', label: 'ITC33' },
-  { value: '14', label: 'ITC34' },
-  { value: '15', label: 'ITC41' }
-]
-
-const optionsMunicipalityF = [
-  { value: '1', label: 'Paris' },
-  { value: '2', label: 'Séné et Marna' },
-  { value: '3', label: 'Yvelines' },
-  { value: '4', label: 'Essonne' },
-  { value: '5', label: 'Hauts-de-Seine' },
-  { value: '6', label: 'Seine-Saint-Denis' },
-  { value: '7', label: 'Vallée de la Marne' },
-  { value: '8', label: 'Val-d Oise' },
-  { value: '9', label: 'Cher' },
-  { value: '10', label: 'Eure-et-Loir' },
-  { value: '11', label: 'Interne' },
-  { value: '12', label: 'Indre et Loire' },
-  { value: '13', label: 'Loir-et-Cher' },
-  { value: '14', label: 'Loiret' }, 
-  { value: '15', label: 'Côte d Or' }, 
-  { value: '16', label: 'Nièvre' }, 
-  { value: '17', label: 'Saona et Loira' }, 
-  { value: '18', label: 'Yonne' } 
-]
-
-const optionsMunicipalityI = [
-  { value: '1', label: 'Torino' },
-  { value: '2', label: 'Vercelli' },
-  { value: '3', label: 'Biella' },
-  { value: '4', label: 'Verbano-Cusio-Ossola' },
-  { value: '5', label: 'Novara' },
-  { value: '6', label: 'Cuneo' },
-  { value: '7', label: 'Asti' },
-  { value: '8', label: 'Alessandria' },
-  { value: '9', label: 'Aosta' },
-  { value: '10', label: 'Imperia' },
-  { value: '11', label: 'Savona' },
-  { value: '12', label: 'Genova' },
-  { value: '13', label: 'La Spezia' },
-  { value: '14', label: 'Varese' }
-]
-
-const optionsAgeGroups = [
-  { value: '1', label: 'Y_LT5' },
-  { value: '2', label: 'Y5-9' },
-  { value: '3', label: 'Y10-14' },
-  { value: '4', label: 'Y15-19' },
-  { value: '5', label: 'Y20-24' },
-  { value: '6', label: 'Y25-29' },
-  { value: '7', label: 'Y30-34' },
-  { value: '8', label: 'Y35-39' },
-  { value: '9', label: 'Y40-44' },
-  { value: '10', label: 'Y45-49' },
-  { value: '11', label: 'Y50-54' },
-  { value: '12', label: 'Y55-59' },
-  { value: '13', label: 'Y60-64' },
-  { value: '14', label: 'Y65-69' },
-  { value: '15', label: 'Y70-74' },
-  { value: '16', label: 'Y75-79' },
-  { value: '17', label: 'Y80-84' },
-  { value: '18', label: 'Y85-89' },
-  { value: '19', label: 'Y90-94' },
-  { value: '20', label: 'Y95-99' },
-  { value: '21', label: 'Y_GE100' }
-]
-
-const Service2 = () => (	
-		<Grid container spacing={2}>  
+const Service2 = () => (
+	<Grid container spacing={2}>
 		<Grid item xs={2}>
-			<div style={{ marginBottom: '1em', fontWeight: 'bold' }}>
-				<Accordion className="titleAcc" title="Evaluation of the effects of pollution on specific population groups in Italy and France">
-					<strong>{SERVICE_2_TITLE}</strong>
-				</Accordion>
-			</div>
-			<Paper>{SERVICE_2_DESCRIPTION}</Paper>
+			<Left />
 		</Grid>
 
 		<Grid item xs={10}>
-    <Stack spacing={0.5} style={{ height: '100%', width: '100%'}}>
+			<Stack
+				spacing={0.5}
+				style={{
+					height: '100%',
+					width: '100%',
+				}}
+			>
+				<Grid container spacing={4}>
+					<Grid item xs={4}>
+						<div
+							style={{
+								height: '100%',
+								width: '100%',
+								border: 'double',
+								borderRadius: '25px',
+								borderColor: '#1678f7',
+								paddingLeft: '0.8rem',
+								paddingRight: '0.6rem',
+							}}
+						>
+							<Title label="Geographic areas" />
 
-          <Grid container spacing={4}>  
-            <Grid item xs={4}>
-              
-              <div style={{ height: '100%', width: '100%', border: 'double', borderRadius: '25px', borderColor: '#1678f7', paddingLeft: '0.8rem', paddingRight: '0.6rem' }}>
-              
-                <h3>Geographic areas</h3>
-                <Stack spacing={2} style={{ height: '100%', width: '100%'}}>
-
-                    <Grid container spacing={2}>  
-                      <Grid item xs={6}>
-                        <br />
-                        <div style={{ height: '100%', width: '100%'}}>
-                          <label style={{ color: 'black', fontWeight: 'bold', fontSize: 'small' }}>Select a French NUTS3 Region</label>
-                          <Select options={optionsNUTS3French} placeholder="FR101"/>
-                          <br/>
-                          <label style={{ color: 'black', fontWeight: 'bold', fontSize: 'small', paddingTop:'10' }}>Select a French Municipality</label>
-                          <Select options={optionsMunicipalityF} placeholder="Paris" />
-                        </div>
-                      </Grid>
-                      <Grid item xs={6}>
-                        <br />
-                        <div style={{ height: '100%', width: '100%'}}>
-                          <label style={{ color: 'black', fontWeight: 'bold', fontSize: 'small' }}>Select an Italian NUTS3 Region</label>
-                          <Select options={optionsNUTS3Italian} placeholder="IT101"/>
-                          <br/>
-                          <label style={{ color: 'black', fontWeight: 'bold', fontSize: 'small', paddingTop:'10' }}>Select an Italian Municipality</label>
-                          <Select options={optionsMunicipalityI} placeholder="Torino"/>
-                        </div>
-                      </Grid>
-                    </Grid>
-
-                        <br/>
-                        <br/>
-                        <br/>
-                        <div style={{ height: '50%', width: '50%', marginLeft: '6rem'}}>
-                          <label style={{ color: 'black', fontWeight: 'bold', fontSize: 'small' }}>Select an Age Group</label>
-                          <Select options={optionsAgeGroups} placeholder="Y75-79"/>
-                        </div>
-                     
-            
-                </Stack>
-              </div>
-            </Grid>
-            
-            <Grid item xs={8}>
-              <div style={{ height: '100%', width: '100%'}}>
-                {/*style={{ height: '100%', width: '100%', border: 'double', borderColor: 'blue'}} */}
-                 <div >
-                  <MapContainer center={positionRome} zoom={4}
-                  style={{ height: '60vh', width: '100wh' }}  >
-                      <TileLayer
-                      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                      />
-                      <Marker position={positionRome} icon={new Icon({iconUrl: markerIconPng, iconSize: [15, 31], iconAnchor: [12, 41]})}>
-                      <Popup>
-                        <b>Latitude:</b> {positionRome[0]} <br /> <b>Longitude:</b> {positionRome[1]}
-                      </Popup>
-                      </Marker>
-                      <Marker position={positionParis} icon={new Icon({iconUrl: markerIconPng, iconSize: [15, 31], iconAnchor: [12, 41]})}>
-                      <Popup>
-                        <b>Latitude:</b> {positionParis[0]} <br /> <b>Longitude:</b> {positionParis[1]}
-                      </Popup>
-                      </Marker>
-                </MapContainer>
-              </div>		
-              </div>
-            </Grid>
-          </Grid>
-      
-      <Grid container spacing={1}>  
-          <Grid item xs={6}>
-						<div style={{ height: '100%', width: '100%'}}>
-              <h4>Air pollution data for ITC11 NUTS3 region</h4>
-              <TablePageNew />
+							<Stack spacing={2} style={{ height: '100%', width: '100%' }}>
+								<One />
+							</Stack>
 						</div>
-          </Grid>
+					</Grid>
 
-          <Grid item xs={6}>
-						<div style={{ height: '100%', width: '100%'}}>
-              <h4>Air pollution data for ITC11 NUTS3 region</h4>
-              <TablePageNew />
+					<Grid item xs={8}>
+						<Map />
+					</Grid>
+				</Grid>
+
+				<Grid container spacing={1}>
+					<Grid item xs={6}>
+						<div style={{ height: '100%', width: '100%' }}>
+							<Title label="Air pollution data for ITC11 NUTS3 region" />
+							<Paper>
+								<Table endpoint={GET_NUTS_POP} />
+							</Paper>
 						</div>
-          </Grid>
-      </Grid>
-		</Stack>
+					</Grid>
 
-
+					<Grid item xs={6}>
+						<div style={{ height: '100%', width: '100%' }}>
+							<Title label="Air pollution data for ITC11 NUTS3 region" />
+							<Paper>
+								<Table endpoint={GET_NUTS_POP2} />
+							</Paper>
+						</div>
+					</Grid>
+				</Grid>
+			</Stack>
 		</Grid>
 	</Grid>
 );
