@@ -7,8 +7,7 @@ import './service2.css';
 
 import Paper from '@mui/material/Paper';
 import Table from '../table-data';
-import { GET_NUTS_POP } from 'api/constants';
-import { GET_NUTS_POP2 } from 'api/constants';
+import { AQ } from 'api/constants';
 
 import Left from './left';
 import One from './center/one';
@@ -40,6 +39,7 @@ const Service2 = () => (
 								borderColor: '#1678f7',
 								paddingLeft: '0.8rem',
 								paddingRight: '0.6rem',
+								paddingTop: '0.6rem',
 							}}
 						>
 							<Title label="Geographic areas" />
@@ -55,25 +55,29 @@ const Service2 = () => (
 					</Grid>
 				</Grid>
 
-				<Grid container spacing={1}>
-					<Grid item xs={6}>
-						<div style={{ height: '100%', width: '100%' }}>
-							<Title label="Air pollution data for ITC11 NUTS3 region" />
-							<Paper>
-								<Table endpoint={GET_NUTS_POP} />
-							</Paper>
-						</div>
-					</Grid>
+				<div style={{ height: '100%', width: '100%', paddingTop: '2rem' }}>
+					<Title label="Air pollution data (PM10) for ITC11 NUTS3 region" />
+					<Paper>
+						<Table
+							endpoint={AQ}
+							country={'IT'}
+							lang={'it'}
+							municipality={'Torino'}
+						/>
+					</Paper>
+				</div>
 
-					<Grid item xs={6}>
-						<div style={{ height: '100%', width: '100%' }}>
-							<Title label="Air pollution data for ITC11 NUTS3 region" />
-							<Paper>
-								<Table endpoint={GET_NUTS_POP2} />
-							</Paper>
-						</div>
-					</Grid>
-				</Grid>
+				<div style={{ height: '100%', width: '100%' }}>
+					<Title label="Air pollution data (PM10) for FR101 NUTS3 region" />
+					<Paper>
+						<Table
+							endpoint={AQ}
+							country={'FR'}
+							lang={'fr'}
+							municipality={'Paris'}
+						/>
+					</Paper>
+				</div>
 			</Stack>
 		</Grid>
 	</Grid>

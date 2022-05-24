@@ -5,15 +5,16 @@ import { Icon } from 'leaflet';
 
 const positionRome = [41.9027835, 12.4963655];
 const positionParis = [48.864716, 2.349014];
+const positionMilan = [45.3930345, 8.9198249]; 
 
 const Map = () => (
 	<div style={{ height: '100%', width: '100%' }}>
 		<div>
 			<MapContainer
-				center={positionRome}
-				zoom={4}
+				center={positionMilan}
+				zoom={4.5}
 				style={{
-					height: '60vh',
+					height: '75vh',
 					width: '100wh',
 				}}
 			>

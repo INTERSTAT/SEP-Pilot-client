@@ -9,20 +9,20 @@ import Right from './right';
 import Center from './center/component';
 
 const Service1 = () => (
-	<Grid container spacing={2}>
-		<Grid item xs={2}>
+	<Grid container spacing={1}>
+		<Stack spacing={1} style={{ height: '100%', width: '100%' }}>
 			<Left />
-		</Grid>
+		</Stack>
 
-		<Grid item xs={4}>
+		<Grid item xs={3}>
 			<Center />
 		</Grid>
 
-		<Grid item xs={6}>
+		<Grid item xs={9}>
 			<div style={{ height: '100%', width: '100%' }}>
-				<Stack spacing={2} style={{ height: '100%', width: '100%' }}>
+				{/* <Stack spacing={2} style={{ height: '100%', width: '100%' }}> */}
 					<Right />
-				</Stack>
+				{/* </Stack> */}
 			</div>
 		</Grid>
 	</Grid>

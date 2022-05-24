@@ -6,4 +6,4 @@ The map is interactive: when you hover the cursor on the region of interest, the
 In a tabular view, you will be able to view and compare French and Italian data relating to the population and air pollution related to PM10.
 The table data can be further analyzed with the external tools Cube visualizer and Olap Browser.
 With this service it is possible to observe, for example, in which regions the most vulnerable population groups are most at risk from pollution.`;
-export const SERVICE_2_TITLE = `Evaluation of the effects of pollution on specific population groups in Italy and France`;
+export const SERVICE_2_TITLE = ``;

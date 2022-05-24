@@ -27,8 +27,8 @@ const customStyles = {
 	},
 };
 
-const Table = ({ endpoint }) => {
-	const { data, error, loading } = useFetch(endpoint);
+const Table = ({ endpoint, country, lang, municipality }) => {
+	const { data, error, loading } = useFetch(endpoint, country, lang, municipality);
 
 	if (loading) return <Loader />;
 	if (error) return <Error message={error.toString()} />;
@@ -42,6 +42,7 @@ const Table = ({ endpoint }) => {
 			data={tableData}
 			customStyles={customStyles}
 			pagination
+			//paginationRowsPerPageOptions={rowsPerPage}
 		/>
 	);
 };
