@@ -4,3 +4,4 @@ export { popAq } from './pop-aq';
 export { nuts } from './nuts';
 export { lau } from './lau';
 export { aq } from './aq';
+export { countries } from './countries';

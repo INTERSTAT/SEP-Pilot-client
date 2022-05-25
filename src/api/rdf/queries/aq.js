@@ -6,7 +6,10 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX ap_Istat: <http://www.interstat.it/air_pollution#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
-select distinct ?municipality ?nuts3_Code ?station ?aq_value ?pollutant ?code
+PREFIX eionet: <http://dd.eionet.europa.eu/property/>
+
+select distinct ?nuts3 ?municipality ?station_name ?station_local_id ?air_quality_value ?pollutant ?code ?aggregation_Type 
+?aggregation_info ?measure_unit ?info_measure_unit
 where {
 ?obs qb:dataSet isc:ds1 ;
 sdmx-measure:obsValue ?population ;
@@ -25,10 +28,22 @@ isc:dim-age ?ageClassURI .
 ?ap skos:prefLabel ?pollutant.
 ?ap skos:notation ?code.
 ?station ap_Istat:located_in_municipality ?lauURI.
+
+?station ap_Istat:station_LocalId ?station_local_id .
+?station ap_Istat:station_name ?station_name .
+
+?o ap_Istat:has_type  ?type .
+?type skos:notation ?aggregation_Type .
+?type skos:definition ?aggregation_info .
+
+?o ap_Istat:related_to_pollutant ?generalPollutant .
+?generalPollutant eionet:mandatoryUnit ?unit .
+?unit skos:notation ?measure_unit .
+?unit skos:prefLabel ?info_measure_unit .
     
 ?lauURI skos:prefLabel ?municipality.
 ?o ap_Istat:hasResult ?r.
-?r ap_Istat:aq_value ?aq_value.
+?r ap_Istat:aq_value ?air_quality_value.
 
 #FILTER (lang(?age_Class) = 'en').
 #FILTER (lang(?gender) = 'en').
