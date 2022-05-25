@@ -7,12 +7,14 @@ import './service2.css';
 
 import Paper from '@mui/material/Paper';
 import Table from '../table-data';
-import { AQ } from 'api/constants';
+import { AQ, POP_FROM_LAU_AGE  } from 'api/constants';
 
 import Left from './left';
 import One from './center/one';
 import Title from 'components/common/title';
 import Map from './center/map';
+import Value from './value';
+import { AgricultureOutlined } from '@mui/icons-material';
 
 const Service2 = () => {
 	const [lauIt, setLauIt] = useState('');
@@ -21,8 +23,15 @@ const Service2 = () => {
 	const [nutsFr, setNutsFr] = useState('');
 	const [age, setAge] = useState('');
 
-	let label_It = "Air pollution data (PM10) for the " + nutsIt + " NUTS3 region";
-	let label_Fr = "Air pollution data (PM10) for the " + nutsFr + " NUTS3 region";
+	let label_It =
+		'Air pollution data (PM10) for the ' + nutsIt + ' NUTS3 region';
+	let label_Fr =
+		'Air pollution data (PM10) for the ' + nutsFr + ' NUTS3 region';
+
+	let label_pop_It =
+		'Total population in the French territory for the ' + age + ' Age Group';
+	let label_pop_Fr =
+		'Total population in the Italian territory for the ' + age + ' Age Group';
 
 	return (
 		<Grid container spacing={2}>
@@ -55,18 +64,18 @@ const Service2 = () => {
 								<Title label="Geographic areas" />
 
 								<Stack spacing={2} style={{ height: '100%', width: '100%' }}>
-									<One 	
+									<One
 										lauIt={lauIt}
 										setLauIt={setLauIt}
 										lauFr={lauFr}
-										setLauFr={setLauFr} 
+										setLauFr={setLauFr}
 										nutsIt={nutsIt}
 										setNutsIt={setNutsIt}
 										nutsFr={nutsFr}
 										setNutsFr={setNutsFr}
 										age={age}
 										setAge={setAge}
-										/>
+									/>
 								</Stack>
 							</div>
 						</Grid>
@@ -76,8 +85,39 @@ const Service2 = () => {
 						</Grid>
 					</Grid>
 
+					<Grid container spacing={2}>
+						<Grid item xs={6}>
+							<div
+								style={{ height: '100%', width: '100%', paddingTop: '2rem', textAlign: 'center' }}
+							>
+								<Title label={label_pop_It} />
+
+								<Value
+									endpoint={POP_FROM_LAU_AGE}
+									age={age}
+									mun={lauIt}
+								></Value>
+
+							</div>
+						</Grid>
+
+						<Grid item xs={6}>
+							<div
+								style={{ height: '100%', width: '100%', paddingTop: '2rem', textAlign: 'center' }}
+							>
+								<Title label={label_pop_Fr} />
+
+								<Value
+									endpoint={POP_FROM_LAU_AGE}
+									age={age}
+									mun={lauFr}
+								></Value>
+
+							</div>
+						</Grid>
+					</Grid>
+
 					<div style={{ height: '100%', width: '100%', paddingTop: '2rem' }}>
-						
 						<Title label={label_It} />
 
 						<Paper>

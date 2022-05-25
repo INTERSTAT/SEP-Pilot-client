@@ -37,7 +37,6 @@ const customStyles = {
 };
 
 const Table = ({ endpoint, country, lang, municipality }) => {
-	console.log("COUNTRY:  " + country)
 	const { data, error, loading } = useFetch(endpoint, country, lang, municipality);
 
 	if (loading) return <Loader />;

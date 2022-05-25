@@ -7,3 +7,4 @@ export { aq } from './aq';
 export { countries } from './countries';
 export { ageGroups } from './age-groups';
 export { lauByNuts } from './lau-by-nuts';
+export { popByLauAge } from './pop-by-lau-age';
