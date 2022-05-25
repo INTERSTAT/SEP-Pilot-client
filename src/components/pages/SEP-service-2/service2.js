@@ -15,7 +15,14 @@ import Title from 'components/common/title';
 import Map from './center/map';
 
 const Service2 = () => {
-	const [country, setCountry] = useState('0');
+	const [lauIt, setLauIt] = useState('');
+	const [lauFr, setLauFr] = useState('');
+	const [nutsIt, setNutsIt] = useState('');
+	const [nutsFr, setNutsFr] = useState('');
+	const [age, setAge] = useState('');
+
+	let label_It = "Air pollution data (PM10) for the " + nutsIt + " NUTS3 region";
+	let label_Fr = "Air pollution data (PM10) for the " + nutsFr + " NUTS3 region";
 
 	return (
 		<Grid container spacing={2}>
@@ -48,7 +55,18 @@ const Service2 = () => {
 								<Title label="Geographic areas" />
 
 								<Stack spacing={2} style={{ height: '100%', width: '100%' }}>
-									<One />
+									<One 	
+										lauIt={lauIt}
+										setLauIt={setLauIt}
+										lauFr={lauFr}
+										setLauFr={setLauFr} 
+										nutsIt={nutsIt}
+										setNutsIt={setNutsIt}
+										nutsFr={nutsFr}
+										setNutsFr={setNutsFr}
+										age={age}
+										setAge={setAge}
+										/>
 								</Stack>
 							</div>
 						</Grid>
@@ -59,25 +77,27 @@ const Service2 = () => {
 					</Grid>
 
 					<div style={{ height: '100%', width: '100%', paddingTop: '2rem' }}>
-						<Title label="Air pollution data (PM10) for ITC11 NUTS3 region" />
+						
+						<Title label={label_It} />
+
 						<Paper>
 							<Table
 								endpoint={AQ}
 								country={'IT'}
 								lang={'it'}
-								municipality={'Torino'}
+								municipality={lauIt}
 							/>
 						</Paper>
 					</div>
 
 					<div style={{ height: '100%', width: '100%' }}>
-						<Title label="Air pollution data (PM10) for FR101 NUTS3 region" />
+						<Title label={label_Fr} />
 						<Paper>
 							<Table
 								endpoint={AQ}
 								country={'FR'}
 								lang={'fr'}
-								municipality={'Paris'}
+								municipality={lauFr}
 							/>
 						</Paper>
 					</div>

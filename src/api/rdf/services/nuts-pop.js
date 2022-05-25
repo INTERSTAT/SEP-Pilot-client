@@ -1,9 +1,9 @@
 import { usePost, SEP } from '../utils';
-import { nutsPop, nutsPop2, popAq, nuts, lau, aq, countries } from '../queries';
+import { nutsPop, nutsPop2, popAq, nuts, lau, aq, countries, ageGroups, lauByNuts } from '../queries';
 
-import { GET_NUTS_POP, GET_NUTS_POP2, GET_POP_AQ, NUTS, LAU, AQ, GET_COUNTRIES } from 'api/constants';
+import { GET_NUTS_POP, GET_NUTS_POP2, GET_POP_AQ, NUTS, LAU, AQ, GET_COUNTRIES, AGE_GROUPS, GET_LAU_FROM_NUTS } from 'api/constants';
 
-export const useFetch = (constant, country, lang, municipality) => {
+export const useFetch = (constant, country, lang, municipality, nuts3Code ) => {
 	switch (constant) {
 		case GET_NUTS_POP:
 			return usePost(SEP)(nutsPop);
@@ -13,6 +13,10 @@ export const useFetch = (constant, country, lang, municipality) => {
 			return usePost(SEP)(nuts({countryToSelect: country})); 
 		case LAU:
 			return usePost(SEP)(lau({lang: lang})); 
+		case GET_LAU_FROM_NUTS:
+			return usePost(SEP)(lauByNuts({lang: lang, nuts3Code:nuts3Code }));  
+		case AGE_GROUPS:
+			return usePost(SEP)(ageGroups);
 		case GET_POP_AQ:
 			let language = country.toString().toLowerCase();
 			return usePost(SEP)(popAq({country: country, lang: language})); 

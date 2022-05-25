@@ -5,3 +5,5 @@ export const NUTS = 'NUTS';
 export const LAU = 'LAU';
 export const AQ = 'AQ';
 export const GET_COUNTRIES = 'GET_COUNTRIES';
+export const AGE_GROUPS = 'AGE_GROUPS';
+export const GET_LAU_FROM_NUTS = 'GET_LAU_FROM_NUTS';
