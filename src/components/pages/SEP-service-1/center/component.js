@@ -5,6 +5,9 @@ import Stack from '@mui/material/Stack';
 
 import Map from './map';
 
-const Center = () => <Map />;
+const Center = ({ country }) => {
+
+return <Map country={country} />;
+};
 
 export default Center;

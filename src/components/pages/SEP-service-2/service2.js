@@ -12,13 +12,14 @@ import { AQ, POP_FROM_LAU_AGE  } from 'api/constants';
 import Left from './left';
 import One from './center/one';
 import Title from 'components/common/title';
-import Map from './center/map';
+//import Map from './center/map_old';
+import Map from './map'
 import Value from './value';
-import { AgricultureOutlined } from '@mui/icons-material';
 
 const Service2 = () => {
 	const [lauIt, setLauIt] = useState('');
 	const [lauFr, setLauFr] = useState('');
+	const [lauCode, setLauCode] = useState('');
 	const [nutsIt, setNutsIt] = useState('');
 	const [nutsFr, setNutsFr] = useState('');
 	const [age, setAge] = useState('');
@@ -28,10 +29,10 @@ const Service2 = () => {
 	let label_Fr =
 		'Air pollution data (PM10) for the ' + nutsFr + ' NUTS3 region';
 
-	let label_pop_It =
-		'Total population in the French territory for the ' + age + ' Age Group';
 	let label_pop_Fr =
-		'Total population in the Italian territory for the ' + age + ' Age Group';
+		'Total population in the selected French territory for the ' + age + ' Age Group';
+	let label_pop_It =
+		'Total population in the selected Italian territory for the ' + age + ' Age Group';
 
 	return (
 		<Grid container spacing={2}>
@@ -75,17 +76,36 @@ const Service2 = () => {
 										setNutsFr={setNutsFr}
 										age={age}
 										setAge={setAge}
+										lauCode={lauCode}
+										setLauCode={setLauCode}
 									/>
 								</Stack>
+								
 							</div>
 						</Grid>
+						
+						
 
 						<Grid item xs={8}>
-							<Map />
+							<Map lauCode={lauCode} />
 						</Grid>
 					</Grid>
 
 					<Grid container spacing={2}>
+					<Grid item xs={6}>
+							<div
+								style={{ height: '100%', width: '100%', paddingTop: '2rem', textAlign: 'center' }}
+							>
+								<Title label={label_pop_Fr} />
+
+								<Value
+									endpoint={POP_FROM_LAU_AGE}
+									age={age}
+									mun={lauFr}
+								></Value>
+							</div>
+						</Grid>
+
 						<Grid item xs={6}>
 							<div
 								style={{ height: '100%', width: '100%', paddingTop: '2rem', textAlign: 'center' }}
@@ -96,21 +116,6 @@ const Service2 = () => {
 									endpoint={POP_FROM_LAU_AGE}
 									age={age}
 									mun={lauIt}
-								></Value>
-
-							</div>
-						</Grid>
-
-						<Grid item xs={6}>
-							<div
-								style={{ height: '100%', width: '100%', paddingTop: '2rem', textAlign: 'center' }}
-							>
-								<Title label={label_pop_Fr} />
-
-								<Value
-									endpoint={POP_FROM_LAU_AGE}
-									age={age}
-									mun={lauFr}
 								></Value>
 
 							</div>
@@ -126,6 +131,7 @@ const Service2 = () => {
 								country={'IT'}
 								lang={'it'}
 								municipality={lauIt}
+								pollutantType={'PM10'}
 							/>
 						</Paper>
 					</div>
@@ -138,6 +144,7 @@ const Service2 = () => {
 								country={'FR'}
 								lang={'fr'}
 								municipality={lauFr}
+								pollutantType={'PM10'}
 							/>
 						</Paper>
 					</div>

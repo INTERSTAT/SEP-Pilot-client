@@ -18,11 +18,13 @@ const Service1 = () => {
 			</Stack>
 
 			<Grid item xs={2}>
-				<Center />
+			<div style={{ paddingTop: '2em' }}>
+				<Center country={country}  />
+				</div>
 			</Grid>
 
 			<Grid item xs={10}>
-				<div style={{ height: '100%', width: '100%' }}>
+				<div style={{ height: '100%', width: '100%', paddingTop: '2em' }}>
 					<Stack spacing={1} style={{ height: '50%', width: '100%' }}>
 						<Right country={country} setCountry={setCountry} />
 					</Stack>

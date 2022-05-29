@@ -11,7 +11,28 @@ const positionNaples = [40.8517746, 14.2681244];
 const positionFrosinone = [41.6401367, 13.3519019];
 const positionSalerno = [40.682441, 14.768096];
 
-const Map = () => (
+const Map = ({ country }) => {
+	const positionRome = [41.9027835, 12.4963655];
+	const positionParis = [48.864716, 2.349014];
+	const positionMilan = [45.4654219, 9.1859243];
+	let zoom ;
+
+	let center ;
+	if(country === 'IT'){
+		console.log("SONO IN IT");
+		center = positionRome;
+		zoom = 7;
+		console.log("CENTER: " + JSON.stringify(center) + " ZOOM: " + zoom);
+	}else if(country === 'FR') {
+		console.log("SONO IN FR");
+		center = positionParis;
+		zoom = 5;
+	} else {
+		zoom = 4.4;
+		center = positionMilan;
+	}
+
+return (
 	<div
 		style={{
 			height: '100%',
@@ -21,8 +42,8 @@ const Map = () => (
 		}}
 	>
 		<MapContainer
-			center={positionRome}
-			zoom={4.4}
+			center={center}
+			zoom={zoom}
 			style={{ height: '80vh', width: '20wh' }}
 		>
 			<TileLayer
@@ -105,5 +126,6 @@ const Map = () => (
 		</MapContainer>
 	</div>
 );
+};
 
 export default Map;

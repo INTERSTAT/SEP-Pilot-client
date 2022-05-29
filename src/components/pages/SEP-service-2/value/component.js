@@ -4,7 +4,7 @@ import Error from 'components/common/error';
 import { useFetch } from 'api';
 
 const Value = ({ endpoint, age, mun }) => {
-	const { data, error, loading } = useFetch(endpoint, '', '', mun, '', age );
+	const { data, error, loading } = useFetch(endpoint, '', '', mun, '', age, '', '');
 
 	if (loading) return <Loader />;
 	if (error) return <Error message={error.toString()} />;

@@ -5,7 +5,7 @@ import { SERVICE_1_TITLE, SERVICE_1_DESCRIPTION } from '../data';
 
 const Left = () => (
 	<>
-		<div style={{ marginBottom: '1em', fontWeight: 'bold' }}>
+		<div style={{ marginBottom: '1em'  }}>
 			<Accordion
 				className="titleAcc"
 				title="Resident population in the most polluted areas"
@@ -13,7 +13,7 @@ const Left = () => (
 				<strong>{SERVICE_1_TITLE}</strong>
 			</Accordion>
 		</div>
-		<Paper style={{ fontSize: '100px' }}>{SERVICE_1_DESCRIPTION}</Paper>
+		<Paper>{SERVICE_1_DESCRIPTION}</Paper>
 	</>
 );
 

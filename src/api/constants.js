@@ -8,3 +8,5 @@ export const GET_COUNTRIES = 'GET_COUNTRIES';
 export const AGE_GROUPS = 'AGE_GROUPS';
 export const GET_LAU_FROM_NUTS = 'GET_LAU_FROM_NUTS';
 export const POP_FROM_LAU_AGE = 'POP_FROM_LAU_AGE';
+export const AQ_LEVELS = 'AQ_LEVELS';
+export const POINT_FROM_LAUCODE = 'POINT_FROM_LAUCODE';

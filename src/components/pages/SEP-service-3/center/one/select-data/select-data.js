@@ -6,17 +6,14 @@ import { sparqlDataToTable } from 'utils';
 import Select from 'react-select';
 
 
-const SelectData = ({ endpoint, country, lang, nuts3Code, lauFr, setLauFr, lauIt, setLauIt, nutsIt, setNutsIt, nutsFr, setNutsFr, age, setAge,  lauCode, setLauCode }) => {
+const SelectData = ({ endpoint, country, lang,  rangePm10, setRangePm10, rangePm25, setRangePm25, rangeNo3, setRangeNo3, coutry, setCountry, type,
+	lauFr, setLauFr, lauIt, setLauIt, nutsIt, setNutsIt, nutsFr, setNutsFr, nuts3Code }) => {
 	
 	const handleChange = (obj) => {
 		if(lang==='it'){
 			console.log(obj.label);
-			setLauIt(obj.label);
+			setLauIt(obj.label); 
 			console.log(JSON.stringify(lauIt));
-
-			setLauCode(obj.lauCode);
-			console.log("LAU CODE SELEZIONATO: " + lauCode);
-			console.log(JSON.stringify(lauCode));
 		}
 		if(lang==='fr'){
 			console.log(obj.label);
@@ -31,12 +28,25 @@ const SelectData = ({ endpoint, country, lang, nuts3Code, lauFr, setLauFr, lauIt
 			setNutsIt(obj.code);
 			console.log(JSON.stringify(nutsIt));
 		}
-		if(endpoint==="AGE_GROUPS"){
-			setAge(obj.label);
-			console.log(JSON.stringify(age));
+		if(endpoint==="AQ_LEVELS" && type==="PM10"){
+			setRangePm10(obj.label);
+			console.log(JSON.stringify(rangePm10));
 		}
+		if(endpoint==="AQ_LEVELS" && type==="PM25"){
+			setRangePm25(obj.label);
+			console.log(JSON.stringify(rangePm25));
+		}
+		if(endpoint==="AQ_LEVELS" && type==="NO2"){
+			setRangeNo3(obj.label);
+			console.log(JSON.stringify(rangeNo3));
+		}
+		if(endpoint==="GET_COUNTRIES") {
+			setCountry(obj.label);
+			console.log(JSON.stringify(country));
+		}
+		
 	};
-	
+
 	const { data, error, loading } = useFetch(endpoint, country, lang, '', nuts3Code);
 
 	if (loading) return <Loader />;

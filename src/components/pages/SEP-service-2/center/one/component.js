@@ -4,12 +4,11 @@ import 'leaflet/dist/leaflet.css';
 import SelectData from '../../select-data';
 import {
 	NUTS,
-	LAU,
 	AGE_GROUPS, GET_LAU_FROM_NUTS
 } from 'api/constants';
 
 
-const One = ({ lauIt, setLauIt, lauFr, setLauFr, nutsIt, setNutsIt, nutsFr, setNutsFr, age, setAge  }) => {
+const One = ({ lauIt, setLauIt, lauFr, setLauFr, nutsIt, setNutsIt, nutsFr, setNutsFr, age, setAge,  lauCode, setLauCode  }) => {
 
 return (
 	<>
@@ -21,7 +20,6 @@ return (
 					>
 						Select a French NUTS3 Region
 					</label>
-					{/* <Select options={optionsNUTS3French} placeholder="FR101" /> */}
 
 					<SelectData endpoint={NUTS} country={'FR'} nutsFr={nutsFr} setNutsFr={setNutsFr} /> 
 
@@ -36,7 +34,6 @@ return (
 					>
 						Select a French Municipality
 					</label>
-					{/* <Select options={optionsMunicipalityF} placeholder="Paris" /> */}
 
 					<SelectData endpoint={GET_LAU_FROM_NUTS} lang={'fr'} nuts3Code={nutsFr} lauFr={lauFr} setLauFr={setLauFr} /> 
 
@@ -50,7 +47,6 @@ return (
 					>
 						Select an Italian NUTS3 Region
 					</label>
-					{/* <Select options={optionsNUTS3Italian} placeholder="IT101" /> */}
 
 					<SelectData endpoint={NUTS} country={'IT'} nutsIt={nutsIt} setNutsIt={setNutsIt} /> 
 					
@@ -65,9 +61,8 @@ return (
 					>
 						Select an Italian Municipality
 					</label>
-					{/* <Select options={optionsMunicipalityI} placeholder="Torino" /> */}
 
-					<SelectData endpoint={GET_LAU_FROM_NUTS} lang={'it'} nuts3Code={nutsIt} lauIt={lauIt} setLauIt={setLauIt} /> 
+					<SelectData endpoint={GET_LAU_FROM_NUTS} lang={'it'} nuts3Code={nutsIt} lauIt={lauIt} setLauIt={setLauIt} lauCode={lauCode} setLauCode={setLauCode} /> 
 
 				</div>
 			</Grid>

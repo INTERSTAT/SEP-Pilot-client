@@ -36,8 +36,8 @@ const customStyles = {
 	},
 };
 
-const Table = ({ endpoint, country, lang, municipality }) => {
-	const { data, error, loading } = useFetch(endpoint, country, lang, municipality);
+const Table = ({ endpoint, country, lang, municipality, pollutantType }) => {
+	const { data, error, loading } = useFetch(endpoint, country, lang, municipality, '', '', pollutantType, ''  );
 
 	if (loading) return <Loader />;
 	if (error) return <Error message={error.toString()} />;

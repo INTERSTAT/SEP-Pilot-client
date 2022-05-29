@@ -1,17 +1,19 @@
-export const popAq  = ({ country, lang }) => `PREFIX qb: <http://purl.org/linked-data/cube#>
+export const popAq  = ({ country, lang }) => `
+PREFIX qb: <http://purl.org/linked-data/cube#>
 PREFIX sdmx-measure: <http://purl.org/linked-data/sdmx/2009/measure#>
 PREFIX isc: <http://id.cef-interstat.eu/sc/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 PREFIX ap_Istat: <http://www.interstat.it/air_pollution#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 #PREFIX eionet: <http://dd.eionet.europa.eu/property/>
 
-select distinct ?nuts3 ?nuts3_Code ?municipality ?population ?gender ?age_Class (avg(?v) as ?avg_Value_Pollutant) ?pollutant ?code 
+select distinct ?nuts3 ?nuts3_Code ?municipality (xsd:integer(?pop) as ?population) ?gender ?age_Class (avg(?v) as ?avg_Pollutant_value) ?pollutant ?code 
 where {
 ?obs qb:dataSet isc:ds1 ;
-sdmx-measure:obsValue ?population ;
+sdmx-measure:obsValue ?pop ;
 isc:att-nuts3 ?nuts3URI ;
 isc:dim-sex ?sexURI ;
 isc:dim-lau ?lauURI ;
@@ -36,7 +38,8 @@ FILTER (regex (?nuts3_Code , "^(` + country + `)")).
 FILTER (lang(?nuts3) = '`  + lang + `').
 FILTER (lang(?age_Class) = 'en').
 FILTER (lang(?gender) = 'en').
+FILTER (?code = 'PM10').
 }
-group by ?nuts3 ?nuts3_Code ?municipality ?population ?gender ?age_Class ?ap ?pollutant ?code
-ORDER BY DESC(?avg_Value_Pollutant)
+group by ?nuts3 ?nuts3_Code ?municipality ?pop ?gender ?age_Class ?ap ?pollutant ?code
+ORDER BY DESC(?avg_Pollutant_value)
 `;

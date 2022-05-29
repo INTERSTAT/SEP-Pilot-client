@@ -1,9 +1,10 @@
-import { usePost, SEP } from '../utils';
-import { nutsPop, nutsPop2, popAq, nuts, lau, aq, countries, ageGroups, lauByNuts, popByLauAge } from '../queries';
+import { usePost, SEP, GF } from '../utils';
+import { extractValues } from '../utils/transformers';
+import { nutsPop, nutsPop2, popAq, nuts, lau, aq, countries, ageGroups, lauByNuts, popByLauAge, aqLevels, lauCodePoint } from '../queries';
 
-import { GET_NUTS_POP, GET_NUTS_POP2, GET_POP_AQ, NUTS, LAU, AQ, GET_COUNTRIES, AGE_GROUPS, GET_LAU_FROM_NUTS, POP_FROM_LAU_AGE } from 'api/constants';
+import { GET_NUTS_POP, GET_NUTS_POP2, GET_POP_AQ, NUTS, LAU, AQ, GET_COUNTRIES, AGE_GROUPS, GET_LAU_FROM_NUTS, POP_FROM_LAU_AGE, AQ_LEVELS, POINT_FROM_LAUCODE } from 'api/constants';
 
-export const useFetch = (constant, country, lang, municipality, nuts3Code, ageGroup  ) => {
+export const useFetch = (constant, country, lang, municipality, nuts3Code, ageGroup, pollutantType, lauCode  ) => {
 	switch (constant) {
 		case GET_NUTS_POP:
 			return usePost(SEP)(nutsPop);
@@ -21,11 +22,15 @@ export const useFetch = (constant, country, lang, municipality, nuts3Code, ageGr
 			let language = country.toString().toLowerCase();
 			return usePost(SEP)(popAq({country: country, lang: language})); 
 		case AQ:
-			return usePost(SEP)(aq({country: country, lang: lang, municipality: municipality})); 
+			return usePost(SEP)(aq({country: country, lang: lang, municipality: municipality , pollutantType: pollutantType })); 
 		case GET_COUNTRIES:
 			return usePost(SEP)(countries);
 		case POP_FROM_LAU_AGE:
 			return usePost(SEP)(popByLauAge({ municipality: municipality, ageGroup: ageGroup })); 
+		case AQ_LEVELS:
+			return usePost(SEP)(aqLevels); 
+		case POINT_FROM_LAUCODE:
+			return extractValues(usePost(GF)(lauCodePoint({ lauCode: lauCode }))); 
 		default:
 			return null;
 	}
