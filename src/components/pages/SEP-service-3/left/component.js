@@ -8,7 +8,7 @@ const Left = () => (
 		<div style={{ marginBottom: '1em', fontWeight: 'bold' }}>
 			<Accordion
 				className="titleAcc"
-				title="Evaluation of the effects of pollution on specific population groups in Italy and France"
+				title="Evaluation of the effects of pollution (considering PM2.5 and NO2) on specific municipalities in Italy and France"
 			>
 				<strong>{SERVICE_3_TITLE}</strong>
 			</Accordion>

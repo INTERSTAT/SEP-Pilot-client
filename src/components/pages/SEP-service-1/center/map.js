@@ -4,12 +4,12 @@ import markerIconPng from 'leaflet/dist/images/marker-icon.png';
 import { Icon } from 'leaflet';
 
 const positionRome = [41.9027835, 12.4963655];
-const positionMilan = [45.4654219, 9.1859243];
-const positionTurin = [45.070312, 7.6868565];
 
-const positionNaples = [40.8517746, 14.2681244];
-const positionFrosinone = [41.6401367, 13.3519019];
-const positionSalerno = [40.682441, 14.768096];
+// const positionMilan = [45.4654219, 9.1859243];
+// const positionTurin = [45.070312, 7.6868565];
+// const positionNaples = [40.8517746, 14.2681244];
+// const positionFrosinone = [41.6401367, 13.3519019];
+// const positionSalerno = [40.682441, 14.768096];
 
 const Map = ({ country }) => {
 	const positionRome = [41.9027835, 12.4963655];
@@ -19,7 +19,6 @@ const Map = ({ country }) => {
 
 	let center ;
 	if(country === 'IT'){
-		console.log("SONO IN IT");
 		center = positionRome;
 		zoom = 7;
 		console.log("CENTER: " + JSON.stringify(center) + " ZOOM: " + zoom);
@@ -51,7 +50,7 @@ return (
 				url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 			/>
 			<Marker
-				position={positionTurin}
+				position={positionRome}
 				icon={
 					new Icon({
 						iconUrl: markerIconPng,
@@ -61,12 +60,13 @@ return (
 				}
 			>
 				<Popup>
-					<b>Torino</b> <br /> <b>Latitude:</b> {positionTurin[0]} <br /> <b>Longitude:</b>{' '}
-					{positionTurin[1]}
+					<b>Torino</b> <br /> <b>Latitude:</b> {positionRome[0]} <br /> <b>Longitude:</b>{' '}
+					{positionRome[1]}
 				</Popup>
 			</Marker>
+
 			<Marker
-				position={positionMilan}
+				position={positionParis}
 				icon={
 					new Icon({
 						iconUrl: markerIconPng,
@@ -76,53 +76,11 @@ return (
 				}
 			>
 				<Popup>
-					<b>Milano</b> <br /> <b>Latitude:</b> {positionMilan[0]} <br /> <b>Longitude:</b>{' '}
-					{positionMilan[1]}
+					<b>Frosinone</b> <br /><b>Latitude:</b> {positionParis[0]} <br /> <b>Longitude:</b>{' '}
+					{positionParis[1]}
 				</Popup>
 			</Marker>
-			<Marker
-				position={positionFrosinone}
-				icon={
-					new Icon({
-						iconUrl: markerIconPng,
-						iconSize: [25, 41],
-						iconAnchor: [12, 41],
-					})
-				}
-			>
-				<Popup>
-					<b>Frosinone</b> <br /><b>Latitude:</b> {positionFrosinone[0]} <br /> <b>Longitude:</b>{' '}
-					{positionFrosinone[1]}
-				</Popup>
-			</Marker>
-			<Marker
-				position={positionNaples}
-				icon={
-					new Icon({
-						iconUrl: markerIconPng,
-						iconSize: [25, 41],
-						iconAnchor: [12, 41],
-					})
-				}
-			>
-				<Popup>
-					<b>Napoli</b> <br /> <b>Latitude:</b> {positionNaples[0]} <br /> <b>Longitude:</b>{positionNaples[1]}
-				</Popup>
-			</Marker>
-			<Marker
-				position={positionSalerno}
-				icon={
-					new Icon({
-						iconUrl: markerIconPng,
-						iconSize: [25, 41],
-						iconAnchor: [12, 41],
-					})
-				}
-			>
-				<Popup>
-					<b>Salerno</b> <br /> <b>Latitude:</b> {positionSalerno[0]} <br /> <b>Longitude:</b>{positionSalerno[1]}
-				</Popup>
-			</Marker>
+			
 		</MapContainer>
 	</div>
 );

@@ -93,6 +93,9 @@ const Service3 = () => {
 								<Paper> <Table endpoint={GET_NUTS_POP} /> </Paper>
 							</div> */}
 
+
+<Stack container spacing={1}>
+					<Stack item xs={3}>
 							<div
 								style={{ height: '40%', width: '100%', paddingTop: '1rem' }}
 							>
@@ -108,7 +111,9 @@ const Service3 = () => {
 									/>
 								</Paper>
 							</div>
+							</Stack>
 
+							<Stack item xs={3}>
 							<div style={{ height: '40%', width: '100%' }}>
 								<Title label={label_Fr} />
 								<Paper>
@@ -121,7 +126,9 @@ const Service3 = () => {
 									/>
 								</Paper>
 							</div>
+							</Stack>
 
+<Stack item xs={3}>
 							<div
 								style={{ height: '40%', width: '100%' }}
 							>
@@ -137,7 +144,9 @@ const Service3 = () => {
 									/>
 								</Paper>
 							</div>
+							</Stack>
 
+							<Stack item xs={3}>
 							<div style={{ height: '40%', width: '100%' }}>
 								<Title label={label_Fr_2} />
 								<Paper>
@@ -150,6 +159,9 @@ const Service3 = () => {
 									/>
 								</Paper>
 							</div>
+							</Stack>
+							</Stack>
+							
 						</Grid>
 					</Grid>
 				</Stack>

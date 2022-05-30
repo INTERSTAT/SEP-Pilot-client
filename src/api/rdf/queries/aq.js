@@ -17,7 +17,9 @@ where {
 ?ap skos:notation ?code .
 ?station ap_Istat:located_in_municipality ?lauURI.
 ?lauURI ap_Istat:belongs_to_nuts3 ?nuts3 .
-?nuts3 ap_Istat:nuts3_code ?nuts3_Code .
+
+#?nuts3 ap_Istat:nuts3_code ?nuts3_Code .
+?nuts3 skos:notation ?nuts3_Code .
 
 ?station ap_Istat:station_LocalId ?station_id .
 ?station ap_Istat:station_name ?station_name .

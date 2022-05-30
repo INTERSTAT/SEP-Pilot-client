@@ -4,7 +4,7 @@ import Table from '../../table-data';
 import Title from 'components/common/title/component';
 import SelectData from 'components/pages/select-data';
 
-import { GET_POP_AQ, GET_COUNTRIES } from 'api/constants';
+import { GET_POP_AQ, GET_POP_AQ2, GET_COUNTRIES } from 'api/constants';
 
 // const paginationComponentOptions = {
 // 	selectAllRowsItem: true,
@@ -29,9 +29,17 @@ const Right = ({ country, setCountry }) => {
 				/>
 			</div>
 			<div style={{ height: '100%', width: '100%', textAlign: 'center' }}>
-				<Title label="Data about population and pollution in the most polluted municipalities" />
+				{/* <Title label="Data about population and pollution in the most polluted municipalities" /> */}
+				<Title label="Municipalities with higher pollution" />
 				<Paper>
 					<Table endpoint={GET_POP_AQ} country={country} />
+				</Paper>
+			</div>
+
+			<div style={{ height: '100%', width: '100%', textAlign: 'center' }}>
+				<Title label="Municipalities with higher population" />
+				<Paper>
+					<Table endpoint={GET_POP_AQ2} country={country} />
 				</Paper>
 			</div>
 

@@ -122,9 +122,10 @@ const Service2 = () => {
 						</Grid>
 					</Grid>
 
+					<Stack container spacing={1}>
+					<Stack item xs={6}>
 					<div style={{ height: '100%', width: '100%', paddingTop: '2rem' }}>
 						<Title label={label_It} />
-
 						<Paper>
 							<Table
 								endpoint={AQ}
@@ -135,7 +136,10 @@ const Service2 = () => {
 							/>
 						</Paper>
 					</div>
+					</Stack>
 
+			
+					<Stack item xs={6}>
 					<div style={{ height: '100%', width: '100%' }}>
 						<Title label={label_Fr} />
 						<Paper>
@@ -148,6 +152,8 @@ const Service2 = () => {
 							/>
 						</Paper>
 					</div>
+					</Stack>
+					</Stack>
 				</Stack>
 			</Grid>
 		</Grid>

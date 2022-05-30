@@ -10,4 +10,5 @@ export { lauByNuts } from './lau-by-nuts';
 export { popByLauAge } from './pop-by-lau-age';
 export { aqLevels } from './aq-levels';
 export { lauCodePoint } from './lauCode-point';
+export { popAq2 } from './pop-aq2';
 
