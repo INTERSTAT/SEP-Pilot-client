@@ -5,7 +5,7 @@ const HomePage = () => (
 	<div className="Homepage">
 		<img
 			src="https://cef-interstat.eu/wp-content/uploads/2020/12/INTERSTAT_Symbol.png"
-			className="App-logo"
+			//className="App-logo"
 			alt="logo"
 		/>
 		<p>INTERSTAT Support for Environment Policies pilot application</p>
@@ -15,7 +15,7 @@ const HomePage = () => (
 			target="_blank"
 			rel="noopener noreferrer"
 		>
-			Framework homepage
+			INTERSTAT Framework homepage
 		</a>
 	</div>
 );

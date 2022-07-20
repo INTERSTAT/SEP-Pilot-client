@@ -19,8 +19,9 @@ SELECT ?municipality ?ageGroup (xsd:integer(sum(?pop)) AS ?population) WHERE {
     ?lauURI skos:notation ?lau_Code.
         
     FILTER ((lang(?municipality) = 'it') || (lang(?municipality) = 'fr')).
-    FILTER (lang(?age) = 'en').
-    FILTER (lang(?gender) = 'en').
+    #FILTER (lang(?age) = 'en').
+    #FILTER (lang(?gender) = 'en').
+    
     FILTER (str(?municipality) ='` + municipality + `').
     FILTER (str(?ageGroup) ='` + ageGroup + `').
 }

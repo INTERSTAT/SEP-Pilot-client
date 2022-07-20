@@ -60,7 +60,7 @@ return (
 				}
 			>
 				<Popup>
-					<b>Torino</b> <br /> <b>Latitude:</b> {positionRome[0]} <br /> <b>Longitude:</b>{' '}
+					<b>Rome</b> <br /> <b>Latitude:</b> {positionRome[0]} <br /> <b>Longitude:</b>{' '}
 					{positionRome[1]}
 				</Popup>
 			</Marker>
@@ -76,7 +76,7 @@ return (
 				}
 			>
 				<Popup>
-					<b>Frosinone</b> <br /><b>Latitude:</b> {positionParis[0]} <br /> <b>Longitude:</b>{' '}
+					<b>Paris</b> <br /><b>Latitude:</b> {positionParis[0]} <br /> <b>Longitude:</b>{' '}
 					{positionParis[1]}
 				</Popup>
 			</Marker>

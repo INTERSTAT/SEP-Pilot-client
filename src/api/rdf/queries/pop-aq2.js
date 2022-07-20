@@ -35,9 +35,13 @@ isc:dim-age ?ageClassURI .
 ?r ap_Istat:aq_value ?v.
 
 FILTER (regex (?nuts3_Code , "^(` + country + `)")).
-FILTER (lang(?nuts3) = '`  + lang + `').
-FILTER (lang(?age_Class) = 'en').
-FILTER (lang(?gender) = 'en').
+
+filter contains(lcase(str(?gender)), "male") .
+filter contains(str(?age_Class), "years") .
+
+#FILTER (lang(?nuts3) = '`  + lang + `').
+#FILTER (lang(?age_Class) = 'en').
+#FILTER (lang(?gender) = 'en').
 FILTER (?code = 'PM10').
 
 #FILTER((str(?age_Class) = '100 years and over') || (str(?age_Class) = '95 to 99 years') || (str(?age_Class) = '90 #to 94 years') || (str(?age_Class) = '85 to 89 years') || (str(?age_Class) = '80 to 84 years')) .

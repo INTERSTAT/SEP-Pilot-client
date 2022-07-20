@@ -14,7 +14,7 @@ SELECT ?nutsLabel ?sex (sum(?pop) AS ?population) WHERE {
     ?sexURI skos:prefLabel ?sex .
     
     FILTER (regex (?nuts3Code , "^(IT)")).
-  	FILTER (lang(?sex) = 'en').
+    #FILTER (lang(?sex) = 'en').
     
 }
 GROUP BY ?nutsLabel ?sex

@@ -10,7 +10,8 @@ const muiTheme = createTheme();
 ReactDOM.render(
 	<React.StrictMode>
 		<ThemeProvider theme={muiTheme}>
-			<RouterProvider>
+			{/* <RouterProvider basename="/SEP-pilot-client"> */}
+			<RouterProvider >
 				<App />
 			</RouterProvider>
 		</ThemeProvider>
