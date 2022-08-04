@@ -35,13 +35,8 @@ isc:dim-age ?ageClassURI .
 ?r ap_Istat:aq_value ?v.
 
 FILTER (regex (?nuts3_Code , "^(` + country + `)")).
-
-filter contains(lcase(str(?gender)), "male") .
-filter contains(str(?age_Class), "years") .
-
-#FILTER (lang(?nuts3) = '`  + lang + `').
-#FILTER (lang(?age_Class) = 'en').
-#FILTER (lang(?gender) = 'en').
+FILTER (lang(?age_Class) = 'en').
+FILTER (lang(?gender) = 'en').
 FILTER (?code = 'PM10').
 }
 group by ?nuts3 ?nuts3_Code ?municipality ?pop ?gender ?age_Class ?ap ?pollutant ?code

@@ -1,4 +1,4 @@
-import { usePost, SEP, GF } from '../utils';
+import { usePost, SEP, GF, S4Y } from '../utils';
 import { extractValues } from '../utils/transformers';
 import { nutsPop, nutsPop2, popAq, nuts, lau, aq, countries, ageGroups, lauByNuts, popByLauAge, aqLevels, lauCodePoint, popAq2 } from '../queries';
 
@@ -27,7 +27,7 @@ export const useFetch = (constant, country, lang, municipality, nuts3Code, ageGr
 		case AQ:
 			return usePost(SEP)(aq({country: country, lang: lang, municipality: municipality , pollutantType: pollutantType })); 
 		case GET_COUNTRIES:
-			return usePost(SEP)(countries);
+			return usePost(S4Y)(countries);
 		case POP_FROM_LAU_AGE:
 			return usePost(SEP)(popByLauAge({ municipality: municipality, ageGroup: ageGroup })); 
 		case AQ_LEVELS:
