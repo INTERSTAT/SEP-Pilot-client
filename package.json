@@ -3,7 +3,7 @@
 	"version": "0.1.1",
 	"license": "MIT",
 	"description": "React client for SEP Pilot",
-	"homepage": "https://interstat.eng.it/SEP-pilot-client",
+	"homepage": "https://framework.cef-interstat.eu/SEP-pilot-client",
 	"dependencies": {
 		"@emotion/react": "^11.7.1",
 		"@emotion/styled": "^11.6.0",
